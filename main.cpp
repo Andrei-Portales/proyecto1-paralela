@@ -1,9 +1,16 @@
 #include <SDL.h>
 #include "Circle.cpp"
+// open gl
+//#include <GL/gl.h>
+//#include <GL/glu.h>
+//#include <GL/glut.h>
+
+
+
 
 
 int main(int argc, char *argv[]) {
-    const int ballCount = 150;
+    const int ballCount = 500;
 
     // Inicializar SDL
     SDL_Init(SDL_INIT_VIDEO);
