@@ -24,13 +24,13 @@ public:
     }
 
     void randomPosition() {
-        SDL_Log("Random position: (%d, %d)", WINDOW_WIDTH, WINDOW_HEIGHT);
+//        SDL_Log("Random position: (%d, %d)", WINDOW_WIDTH, WINDOW_HEIGHT);
         centerX = radius + rand() % (WINDOW_WIDTH - 2 * radius);
         centerY = radius + rand() % (WINDOW_HEIGHT - 2 * radius);
     }
 
     void move() {
-        SDL_Log("Moving circle to (%d, %d)", centerX, centerY);
+//        SDL_Log("Moving circle to (%d, %d)", centerX, centerY);
         centerX += xVel;
         centerY += yVel;
 
@@ -60,7 +60,7 @@ public:
     }
 
     void checkCollision(Circle& other) {
-        SDL_Log("Checking collision between (%d, %d) and (%d, %d)", centerX, centerY, other.centerX, other.centerY);
+//        SDL_Log("Checking collision between (%d, %d) and (%d, %d)", centerX, centerY, other.centerX, other.centerY);
         int dx = centerX - other.centerX;
         int dy = centerY - other.centerY;
         int radii = radius + other.radius;
@@ -106,7 +106,7 @@ public:
 
 
     void draw(SDL_Renderer* renderer) {
-        SDL_Log("Drawing circle at (%d, %d)", centerX, centerY);
+//        SDL_Log("Drawing circle at (%d, %d)", centerX, centerY);
         int r2 = radius * radius;
 
         for (int y = -radius; y <= radius; y++) {

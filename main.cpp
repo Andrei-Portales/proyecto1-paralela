@@ -3,7 +3,7 @@
 
 
 int main(int argc, char *argv[]) {
-    const int ballCount = 15;
+    const int ballCount = 150;
 
     // Inicializar SDL
     SDL_Init(SDL_INIT_VIDEO);
@@ -25,7 +25,10 @@ int main(int argc, char *argv[]) {
     // Inicializar temporizador para FPS
     Uint32 frameStart, frameTime;
     int frameCounter = 0;
-    Uint32 frameDelay = 1000 / 60;
+    Uint32 frameDelay = 1000 / 120;
+    // unlimited FPS
+//     Uint32 frameDelay = 0;
+
     Uint32 fpsTimer = SDL_GetTicks();
 
     while (!quit) {
