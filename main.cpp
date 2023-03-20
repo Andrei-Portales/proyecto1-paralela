@@ -1,9 +1,7 @@
 #include <SDL.h>
-#include <iostream>
-#include <cmath>
 #include "Circle.cpp"
 
-#define BALLS 5
+#define BALLS 8
 
 int main(int argc, char *argv[]) {
     // Inicializar SDL
