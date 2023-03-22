@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
         }
 
         // Mover círculos
-        #pragma omp parallel num_threads(4)
+        #pragma omp parallel num_threads(4) default(none) shared(circleArray, ballCount)
         {
 
         #pragma omp for
