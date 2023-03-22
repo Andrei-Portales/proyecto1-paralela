@@ -1,12 +1,6 @@
 #include <SDL.h>
 #include "Circle.cpp"
-// open gl
-//#include <GL/gl.h>
-//#include <GL/glu.h>
-//#include <GL/glut.h>
-
-
-
+#include "omp.h"
 
 
 int main(int argc, char *argv[]) {
@@ -33,8 +27,6 @@ int main(int argc, char *argv[]) {
     Uint32 frameStart, frameTime;
     int frameCounter = 0;
     Uint32 frameDelay = 1000 / 120;
-    // unlimited FPS
-//     Uint32 frameDelay = 0;
 
     Uint32 fpsTimer = SDL_GetTicks();
 
@@ -47,16 +39,30 @@ int main(int argc, char *argv[]) {
             }
         }
 
+        // Mover círculos
+        #pragma omp parallel num_threads(4)
+        {
+
+        #pragma omp for
         for (int i = 0; i < ballCount; i++) {
             circleArray[i].move();
+        }
 
+        #pragma omp for schedule(dynamic)
+        for (int i = 0; i < ballCount; i++) {
             for (int j = 0; j < ballCount; j++) {
                 if (i != j) {
-                    circleArray[i].checkCollision(circleArray[j]);
+                    // Sección crítica para la detección de colisiones
+                    #pragma omp critical
+                    {
+                        circleArray[i].checkCollision(circleArray[j]);
+                    }
                 }
             }
+        }
 
         }
+
 
         // Limpiar pantalla
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
