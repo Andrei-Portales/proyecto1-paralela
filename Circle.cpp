@@ -24,7 +24,6 @@ public:
     }
 
     void randomPosition() {
-//        SDL_Log("Random position: (%d, %d)", WINDOW_WIDTH, WINDOW_HEIGHT);
         centerX = radius + rand() % (WINDOW_WIDTH - 2 * radius);
         centerY = radius + rand() % (WINDOW_HEIGHT - 2 * radius);
 
