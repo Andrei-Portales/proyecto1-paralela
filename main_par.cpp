@@ -3,7 +3,7 @@
 #include "omp.h"
 
 #define THREAD_NUM 4
-#define BALL_COUNT 500
+#define BALL_COUNT 700
 
 
 int main(int argc, char *argv[]) {
@@ -104,6 +104,11 @@ int main(int argc, char *argv[]) {
             delta_per_second = 0.0;
             fpsTimer = SDL_GetTicks();
         }
+    }
+
+    // limpiar variables
+    for (int i = 0; i < ballCount; i++) {
+        circleArray[i].~Circle();
     }
 
     // Limpiar recursos
