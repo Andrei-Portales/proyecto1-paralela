@@ -1,5 +1,4 @@
 # Proyecto 1 - Programación paralela con OpenMP
-# Proyecto 1 - Programación paralela con OpenMP
 ## Integrantes
 - Andrei Portales
 - Randy Venegas
@@ -43,26 +42,26 @@ sudo apt-get install libsdl2-dev
 ```
 ### Como compilar el programa secuencial
 
-    ```
+    
     gcc main.cpp Circle.cpp Constants.cpp -o main
-    ```
+    
 
 ### Como ejecutar el programa secuencial
 
-    ```
+    
     ./main <cantidad circulos>
-    ```
+    
 
 ### Como compilar el programa paralelo
 
-    ```
+    
     gcc -fopenmp main_par.cpp Circle.cpp Constants.cpp -o main -lSDL2 -lSDL2_image 
-    ```
+    
 
 ### Como ejecutar el programa paralelo
 
-    ```
+    
     ./main <cantidad circulos> <cantidad de hilos>
-    ```
+    
 
 
