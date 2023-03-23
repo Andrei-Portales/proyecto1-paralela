@@ -37,27 +37,35 @@ public:
         centerY += yVel;
 
         if (centerX - radius <= 0) {
-            centerX = radius;
-            xVel = -xVel;
+            centerX = radius * 2;
+            xVel = abs(xVel);
         } else if (centerX + radius >= WINDOW_WIDTH) {
-            centerX = WINDOW_WIDTH - radius;
-            xVel = -xVel;
+            centerX = WINDOW_WIDTH - radius * 2;
+            xVel = -abs(xVel);
         }
 
         if (centerY - radius <= 0) {
             centerY = radius;
-            yVel = -yVel;
+            yVel = abs(yVel);
         } else if (centerY + radius >= WINDOW_HEIGHT) {
             centerY = WINDOW_HEIGHT - radius;
-            yVel = -yVel;
+            yVel = -abs(yVel);
         }
 
         if (std::abs(xVel) < MOVE_SPEED) {
-            xVel = xVel < 0 ? -MOVE_SPEED : MOVE_SPEED;
+            if (xVel == 0) {
+                xVel = rand() % 2 == 0 ? -MOVE_SPEED : MOVE_SPEED;
+            } else {
+                xVel = xVel <= 0 ? -MOVE_SPEED : MOVE_SPEED;
+            }
         }
 
         if (std::abs(yVel) < MOVE_SPEED) {
-            yVel = yVel < 0 ? -MOVE_SPEED : MOVE_SPEED;
+            if (yVel == 0) {
+                yVel = rand() % 2 == 0 ? -MOVE_SPEED : MOVE_SPEED;
+            } else {
+                yVel = yVel < 0 ? -MOVE_SPEED : MOVE_SPEED;
+            }
         }
     }
 
@@ -93,15 +101,15 @@ public:
             other.centerY -= overlap * ny * 0.5;
 
             // Verificar si los círculos están dentro de la ventana
-            if (centerX - radius < 0) centerX = radius;
-            if (centerX + radius > WINDOW_WIDTH) centerX = WINDOW_WIDTH - radius;
-            if (centerY - radius < 0) centerY = radius;
-            if (centerY + radius > WINDOW_HEIGHT) centerY = WINDOW_HEIGHT - radius;
+            if (centerX - radius < 0) centerX = radius * 2;
+            if (centerX + radius > WINDOW_WIDTH) centerX = WINDOW_WIDTH - radius * 2;
+            if (centerY - radius < 0) centerY = radius * 2;
+            if (centerY + radius > WINDOW_HEIGHT) centerY = WINDOW_HEIGHT - radius * 2;
 
-            if (other.centerX - other.radius < 0) other.centerX = other.radius;
-            if (other.centerX + other.radius > WINDOW_WIDTH) other.centerX = WINDOW_WIDTH - other.radius;
-            if (other.centerY - other.radius < 0) other.centerY = other.radius;
-            if (other.centerY + other.radius > WINDOW_HEIGHT) other.centerY = WINDOW_HEIGHT - other.radius;
+            if (other.centerX - other.radius < 0) other.centerX = other.radius * 2;
+            if (other.centerX + other.radius > WINDOW_WIDTH) other.centerX = WINDOW_WIDTH - other.radius * 2;
+            if (other.centerY - other.radius < 0) other.centerY = other.radius * 2;
+            if (other.centerY + other.radius > WINDOW_HEIGHT) other.centerY = WINDOW_HEIGHT - other.radius * 2;
         }
     }
 
