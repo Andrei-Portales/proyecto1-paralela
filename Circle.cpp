@@ -17,12 +17,18 @@ public:
         randomColor();
     }
 
+    /**
+     * Genera un color aleatorio para el círculo
+     */
     void randomColor() {
         color.r = rand() % 255;
         color.g = rand() % 255;
         color.b = rand() % 255;
     }
 
+    /**
+     * Genera una posición aleatoria para el círculo
+     */
     void randomPosition() {
         centerX = radius + rand() % (WINDOW_WIDTH - 2 * radius);
         centerY = radius + rand() % (WINDOW_HEIGHT - 2 * radius);
@@ -31,8 +37,12 @@ public:
         yVel = rand() % (2 * MOVE_SPEED) - MOVE_SPEED;
     }
 
+
+    /**
+     * Esta funcion se encarga de mover cada circulo en el plano 2d
+     * @param renderer
+     */
     void move() {
-//        SDL_Log("Moving circle to (%d, %d)", centerX, centerY);
         centerX += xVel;
         centerY += yVel;
 
@@ -69,8 +79,11 @@ public:
         }
     }
 
+    /**
+     * Esta funcion se encarga de revisar colisiones entre circulos y asi mismo poder calcular la nueva velocidad y la trayectoria
+     * @param renderer
+     */
     void checkCollision(Circle& other) {
-//        SDL_Log("Checking collision between (%d, %d) and (%d, %d)", centerX, centerY, other.centerX, other.centerY);
         int dx = centerX - other.centerX;
         int dy = centerY - other.centerY;
         int radii = radius + other.radius;
@@ -114,9 +127,11 @@ public:
     }
 
 
-
+    /**
+     * Esta funcion se encarga de dibujar cada circulo en el plano 2d
+     * @param renderer
+     */
     void draw(SDL_Renderer* renderer) {
-//        SDL_Log("Drawing circle at (%d, %d)", centerX, centerY);
         int r2 = radius * radius;
 
         for (int y = -radius; y <= radius; y++) {
