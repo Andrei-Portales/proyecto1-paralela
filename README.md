@@ -8,13 +8,13 @@ sudo apt-get install g++
 ```
 sudo apt-get install libsdl2-dev
 ```
-### Como ejecutar el programa secuencial
+### Como Compilar el programa secuencial
 
 
     gcc main.cpp Circle.cpp Constants.cpp -o main
 
 
-### Como ejecutar el programa paralelo
+### Como compilar el programa paralelo
 
 
     gcc -fopenmp main_par.cpp Circle.cpp Constants.cpp -o main -lSDL2 -lSDL2_image 
