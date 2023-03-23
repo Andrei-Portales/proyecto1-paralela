@@ -1,10 +1,10 @@
 # Proyecto 1 - Programación paralela con OpenMP
-#Instrucciones para correrlo
-###Instalar el compilador de C++:
+#  Instrucciones para correrlo
+### Instalar el compilador de C++:
 ```
 sudo apt-get install g++
 ```
-###Instalar la biblioteca SDL:
+### Instalar la biblioteca SDL:
 ```
 sudo apt-get install libsdl2-dev
 ```
